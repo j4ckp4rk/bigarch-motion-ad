@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Big Arch Spot</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root{--red:#DA291C;--gold:#FFC72C;--ink:#0b0b0b;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'Anton','Black Han Sans',sans-serif}
+#wrap{position:fixed;inset:0;display:grid;place-items:center}
+#stage{position:relative;width:1920px;height:1080px;background:var(--ink);overflow:hidden;transform-origin:center}
+.layer{position:absolute;inset:0;display:grid;place-items:center;opacity:0}
+.big{font-size:260px;line-height:.85;color:var(--white);text-transform:uppercase;letter-spacing:-4px;text-align:center}
+.kr{font-family:'Black Han Sans',sans-serif;letter-spacing:-2px}
+.gold{color:var(--gold)}.red{color:var(--red)}
+.stroke{color:transparent;-webkit-text-stroke:6px var(--gold)}
+#grain{position:absolute;inset:-50%;background:repeating-radial-gradient(circle at 30% 40%,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);pointer-events:none;animation:gr .2s steps(2) infinite;z-index:50}
+@keyframes gr{50%{transform:translate(3%,-2%)}}
+#bars:before,#bars:after{content:"";position:absolute;left:0;right:0;height:70px;background:#000;z-index:60}
+#bars:before{top:0}#bars:after{bottom:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40;pointer-events:none}
+#prod{position:absolute;left:50%;top:54%;width:900px;height:700px;transform:translate(-50%,-50%);display:grid;place-items:center}
+#prod img{max-width:100%;max-height:100%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.7))}
+.burger{position:relative;width:760px;height:520px}
+.burger div{position:absolute;left:50%;transform:translateX(-50%);border-radius:40px}
+.callout{position:absolute;font-size:64px;color:var(--gold);padding:8px 22px;border:4px solid var(--gold);background:rgba(0,0,0,.6);opacity:0}
+#ticker{position:absolute;bottom:70px;left:0;white-space:nowrap;font-size:80px;color:#000;background:var(--gold);padding:6px 0;opacity:0;z-index:30}
+#ticker span{display:inline-block;animation:tk 6s linear infinite}
+@keyframes tk{to{transform:translateX(-50%)}}
+#arches{width:520px;height:440px}
+#start{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(0,0,0,.85);cursor:pointer;color:var(--gold);font-size:56px;text-align:center}
+#start small{display:block;font-size:22px;color:#aaa;font-family:sans-serif;margin-top:16px}
+#hud{position:fixed;left:12px;bottom:10px;z-index:101;color:#666;font:13px monospace}
+</style></head>
+<body>
+<div id="wrap"><div id="stage">
+  <div id="bars"></div><div id="grain"></div><div id="flash"></div>
+
+  <!-- S1 HOOK 0-3s -->
+  <div class="layer" id="s1"><div class="big" id="hookTxt"></div></div>
+  <!-- S2 kinetic 3-8s -->
+  <div class="layer" id="s2"><div class="big" id="kin"></div></div>
+  <!-- S3 product 8-15s -->
+  <div class="layer" id="s3">
+    <div class="big stroke" style="position:absolute;top:110px;font-size:230px">BIG ARCH</div>
+    <div id="prod">
+      <img id="pimg" src="bigarch.png" alt="Big Arch" onerror="this.remove();document.getElementById('fallback').style.display='block'">
+      <div class="burger" id="fallback" style="display:none">
+        <div style="top:0;width:700px;height:190px;background:linear-gradient(#e9a443,#b86a1e);border-radius:350px 350px 40px 40px"></div>
+        <div style="top:180px;width:740px;height:40px;background:#6fbf3a;border-radius:30px"></div>
+        <div style="top:215px;width:720px;height:40px;background:#ffc72c;border-radius:6px"></div>
+        <div style="top:250px;width:730px;height:80px;background:#4a2412"></div>
+        <div style="top:325px;width:720px;height:30px;background:#ffc72c;border-radius:6px"></div>
+        <div style="top:350px;width:730px;height:80px;background:#4a2412"></div>
+        <div style="top:425px;width:700px;height:90px;background:linear-gradient(#d18a34,#9a561a);border-radius:20px 20px 60px 60px"></div>
+      </div>
+    </div>
+    <div class="callout" id="c1" style="left:150px;top:420px">2X PATTY</div>
+    <div class="callout" id="c2" style="right:150px;top:560px">BIG ARCH SAUCE</div>
+    <div class="callout" id="c3" style="left:210px;top:740px">NO CAP. ALL STACK.</div>
+  </div>
+  <!-- S4 rap lyric 15-21s -->
+  <div class="layer" id="s4"><div class="big kr" id="lyric" style="font-size:240px"></div></div>
+  <!-- S5 flex 21-25s -->
+  <div class="layer" id="s5"><div class="big" id="flex"></div></div>
+  <!-- S6 end card 25-30s -->
+  <div class="layer" id="s6" style="background:var(--red)">
+    <div style="display:grid;place-items:center;gap:10px">
+      <svg id="arches" viewBox="0 0 260 220"><path d="M10 215 C10 40 45 5 70 5 C100 5 120 60 130 120 C140 60 160 5 190 5 C215 5 250 40 250 215 L212 215 C212 90 200 45 190 45 C175 45 152 120 148 215 L112 215 C108 120 85 45 70 45 C60 45 48 90 48 215 Z" fill="#FFC72C"/></svg>
+      <div class="big" style="font-size:150px">빅아치<span class="gold"> 지금 주문</span></div>
+      <div id="slogan" style="font-family:sans-serif;font-weight:800;font-size:64px;color:#fff;opacity:0">i'm lovin' it</div>
+    </div>
+  </div>
+  <div id="ticker"><span></span></div>
+</div></div>
+<div id="start">▶ CLICK TO PLAY (30s, 사운드 ON)<small>bgm.mp3 / jingle.mp3 / bigarch.png 를 같은 폴더에 두면 자동 교체 · R = 다시재생</small></div>
+<div id="hud"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const stage=$('stage');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);Object.assign(stage.style,{position:'absolute',left:'50%',top:'50%',transform:`translate(-50%,-50%) scale(${s})`})}
+addEventListener('resize',fit);fit();
+
+const BPM=92, B=60/BPM; // ~0.652s
+let ac, t0=0, playing=false, extBgm=null, extJingle=null;
+
+/* ---------- AUDIO (original synth beat; swap with licensed bgm.mp3) ---------- */
+function noiseBuf(){const b=ac.createBuffer(1,ac.sampleRate*.5,ac.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b}
+let NB, master;
+function kick(t){const o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(40,t+.12);g.gain.setValueAtTime(1,t);g.gain.exponentialRampToValueAtTime(.001,t+.35);o.connect(g).connect(master);o.start(t);o.stop(t+.4)}
+function snare(t,v=.6){const s=ac.createBufferSource();s.buffer=NB;const f=ac.createBiquadFilter();f.type='highpass';f.frequency.value=1500;const g=ac.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.2);s.connect(f).connect(g).connect(master);s.start(t);s.stop(t+.25);clap(t)}
+function clap(t){for(let i=0;i<3;i++){const s=ac.createBufferSource();s.buffer=NB;const f=ac.createBiquadFilter();f.type='bandpass';f.frequency.value=1200;const g=ac.createGain();const tt=t+i*.012;g.gain.setValueAtTime(.35,tt);g.gain.exponentialRampToValueAtTime(.001,tt+.1);s.connect(f).connect(g).connect(master);s.start(tt);s.stop(tt+.12)}}
+function hat(t,v=.15,open=false){const s=ac.createBufferSource();s.buffer=NB;const f=ac.createBiquadFilter();f.type='highpass';f.frequency.value=8000;const g=ac.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+(open?.25:.04));s.connect(f).connect(g).connect(master);s.start(t);s.stop(t+.3)}
+function sub(t,freq,dur){const o=ac.createOscillator(),g=ac.createGain(),d=ac.createWaveShaper();o.type='sine';o.frequency.setValueAtTime(freq*1.5,t);o.frequency.exponentialRampToValueAtTime(freq,t+.06);const c=new Float32Array(256);for(let i=0;i<256;i++){const x=i/128-1;c[i]=Math.tanh(x*2.5)}d.curve=c;g.gain.setValueAtTime(.8,t);g.gain.setTargetAtTime(0,t+dur*.8,.08);o.connect(d).connect(g).connect(master);o.start(t);o.stop(t+dur+.3)}
+function stab(t,freqs,v=.07,dur=.25){freqs.forEach(fq=>{const o=ac.createOscillator(),g=ac.createGain(),f=ac.createBiquadFilter();o.type='sawtooth';o.frequency.value=fq;f.type='lowpass';f.frequency.setValueAtTime(2400,t);f.frequency.exponentialRampToValueAtTime(400,t+dur);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(f).connect(g).connect(master);o.start(t);o.stop(t+dur+.05)})}
+function bell(t,fq,v=.12){const o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=fq;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.6);o.connect(g).connect(master);o.start(t);o.stop(t+.7)}
+function riser(t,dur){const s=ac.createBufferSource();s.buffer=NB;s.loop=true;const f=ac.createBiquadFilter();f.type='bandpass';f.Q.value=4;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(9000,t+dur);const g=ac.createGain();g.gain.setValueAtTime(.01,t);g.gain.linearRampToValueAtTime(.3,t+dur);s.connect(f).connect(g).connect(master);s.start(t);s.stop(t+dur)}
+function scratch(t){const s=ac.createBufferSource();s.buffer=NB;s.playbackRate.setValueAtTime(.3,t);s.playbackRate.linearRampToValueAtTime(2,t+.08);s.playbackRate.linearRampToValueAtTime(.4,t+.18);const f=ac.createBiquadFilter();f.type='bandpass';f.frequency.value=900;f.Q.value=3;const g=ac.createGain();g.gain.value=.5;s.connect(f).connect(g).connect(master);s.start(t);s.stop(t+.2)}
+
+// Cm dark G-funk-ish progression (Cm - Ab - Fm - G)
+const ROOT=[65.41,51.91,43.65,49.0], CH=[[261.6,311.1,392],[207.7,261.6,311.1],[174.6,207.7,261.6],[196,246.9,293.7]];
+function scheduleBeat(){
+  const T=t0;
+  // hook: hit at 0, silence, scratch, then drop at 3.0s
+  kick(T);sub(T,ROOT[0],1);stab(T,CH[0],.1,.6);scratch(T+1.2);scratch(T+1.6);riser(T+1.6,1.4);
+  const drop=T+3, end=T+25;
+  for(let t=drop,i=0;t<end;t+=B,i++){
+    const bar=Math.floor(i/4)%4, beat=i%4;
+    if(beat===0||(beat===2&&i%8!==2))kick(t);
+    if(beat===2&&i%8===2)kick(t+B/2);
+    if(beat===1||beat===3)snare(t);
+    for(let k=0;k<4;k++){const roll=(i%16===15)&&k>1;hat(t+k*B/4,k%2?.08:.15);if(roll){hat(t+k*B/4+B/8,.1)}}
+    if(beat===0)sub(t,ROOT[bar],B*1.6);
+    if(beat===2&&i%8===6)sub(t+B/2,ROOT[bar]*1.5,B*.5);
+    if(beat===0||beat===3&&i%8===7)stab(t+(beat===3?B/2:0),CH[bar]);
+    if(i%16===12)bell(t,CH[bar][2]*2);
+  }
+  // break before end card + ORIGINAL 5-note sting (placeholder for official jingle.mp3)
+  riser(T+23.5,1.5);
+  const J=T+25.2;
+  if(extJingle){extJingle.currentTime=0;extJingle.play()}
+  else{[523.3,587.3,659.3,0,784,880].forEach((f,i)=>{if(f){bell(J+i*.16,f,.22);bell(J+i*.16,f/2,.08)}});kick(J+1.0);sub(J+1.0,ROOT[0],1.4);stab(J+1.0,[261.6,329.6,392],.09,1.2)}
+}
+
+function speakSlogan(){
+  try{const u=new SpeechSynthesisUtterance("I'm lovin' it.");u.lang='en-US';u.rate=.85;u.pitch=.8;
+    const v=speechSynthesis.getVoices().find(v=>/en-US/.test(v.lang)&&/male|David|Guy|Mark/i.test(v.name))||speechSynthesis.getVoices().find(v=>/en/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}
+}
+function speakKR(text,rate=1.15){try{const u=new SpeechSynthesisUtterance(text);u.lang='ko-KR';u.rate=rate;u.pitch=.7;const v=speechSynthesis.getVoices().find(v=>/ko/.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+
+/* ---------- VISUAL TIMELINE ---------- */
+const cues=[]; // [time, fn]
+const at=(t,fn)=>cues.push([t,fn]);
+function show(id){document.querySelectorAll('.layer').forEach(l=>l.style.opacity=l.id===id?1:0)}
+function slam(el,html,scale=2.4){el.innerHTML=html;el.animate([{transform:`scale(${scale}) rotate(-4deg)`,opacity:0,filter:'blur(12px)'},{transform:'scale(.96)',opacity:1,filter:'blur(0)',offset:.6},{transform:'scale(1)'}],{duration:260,easing:'cubic-bezier(.2,.9,.2,1)'})}
+function shake(n=18){stage.animate([{translate:'0 0'},{translate:`${n}px ${-n}px`},{translate:`${-n}px ${n/2}px`},{translate:'0 0'}],{duration:180})}
+function flash(o=.8){$('flash').animate([{opacity:o},{opacity:0}],{duration:220})}
+function pop(el,x=0){el.animate([{opacity:0,transform:`translateX(${x}px) scale(.5)`},{opacity:1,transform:'translateX(0) scale(1.08)',offset:.7},{opacity:1,transform:'scale(1)'}],{duration:300,fill:'forwards'})}
+
+// S1 HOOK — first 3s stop the scroll
+at(0,()=>{show('s1');slam($('hookTxt'),'<span class="gold">YO.</span>',4);shake(30);flash(1)});
+at(.65,()=>slam($('hookTxt'),'스크롤<br><span class="red">멈춰.</span>'));
+at(1.6,()=>slam($('hookTxt'),'<span style="font-size:150px">이거 진짜<br><span class="gold">\"큰 거\"</span> 왔다</span>',1.6));
+// S2 kinetic words on beat
+const words=[['THE',''],['BIG','gold'],['GAME','red'],['JUST','stroke'],['CHANGED','gold'],['빅','kr'],['아','kr gold'],['치','kr red']];
+at(3,()=>{show('s2');flash(1);shake(26)});
+words.forEach((w,i)=>at(3+i*B*.75,()=>{slam($('kin'),`<span class="${w[1]}" style="font-size:${w[0].length<3?420:300}px">${w[0]}</span>`);if(i%2)shake(10)}));
+// S3 product reveal
+at(3+8*B*.75,()=>{show('s3');flash(1);shake(30);const p=$('prod');p.animate([{transform:'translate(-50%,-30%) scale(.3) rotate(-25deg)',opacity:0},{transform:'translate(-50%,-50%) scale(1.1) rotate(4deg)',opacity:1,offset:.6},{transform:'translate(-50%,-50%) scale(1) rotate(0)'}],{duration:600,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'});p.animate([{rotate:'0deg'},{rotate:'2deg'},{rotate:'-2deg'},{rotate:'0deg'}],{duration:B*4000,iterations:3,delay:600})});
+at(10,()=>pop($('c1'),-200));at(11.3,()=>pop($('c2'),200));at(12.6,()=>pop($('c3'),-200));
+at(9.5,()=>{const tk=$('ticker');tk.style.opacity=1;tk.querySelector('span').textContent=' ★ BIG ARCH ★ 크게 들어 ★ 크게 먹어 ★ NO CAP ★ BIG ARCH ★ 크게 들어 ★ 크게 먹어 ★ NO CAP'.repeat(2)});
+// S4 rap-lyric kinetic (Korean, beat synced)
+const lyr=['맥도날드','들어가','주문해','<span class="gold">빅아치</span>','두 손','<span class="red">필수</span>','한 입에','<span class="gold">끝장</span>','패티 둘','소스 듬뿍','<span class="stroke">NO CAP</span>','<span class="gold">BIG ARCH</span>'];
+at(15,()=>{show('s4');$('ticker').style.opacity=0;flash(.9)});
+lyr.forEach((w,i)=>at(15+i*B*.75,()=>{slam($('lyric'),w,1.8);if(i%4===3){shake(22);flash(.4)}}));
+at(15,()=>speakKR('맥도날드 들어가, 주문해 빅아치. 두 손 필수, 한 입에 끝장.',1.25));
+// S5 flex
+const flex=[['BIGGER.','gold'],['BOLDER.','red'],['ARCH-ER.','stroke'],['<span class="kr">크게 가자</span>','gold']];
+at(21,()=>{show('s5');flash(1)});
+flex.forEach((w,i)=>at(21+i*1.0,()=>{slam($('flex'),`<span class="${w[1]}">${w[0]}</span>`,3);shake(20)}));
+// S6 end card + jingle + slogan VO
+at(25,()=>{show('s6');flash(1);shake(30);$('arches').animate([{transform:'scale(0) rotate(-90deg)'},{transform:'scale(1.15) rotate(5deg)',offset:.7},{transform:'scale(1)'}],{duration:700,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'})});
+at(26.6,()=>{pop($('slogan'));speakSlogan()});
+at(30,()=>{playing=false;$('start').style.display='grid';$('start').firstChild.textContent='↻ REPLAY ';});
+
+cues.sort((a,b)=>a[0]-b[0]);
+let ci=0;
+function loop(){if(!playing)return;const t=ac.currentTime-t0;$('hud').textContent=t.toFixed(2)+'s / 30.00s';while(ci<cues.length&&cues[ci][0]<=t){cues[ci][1]();ci++}requestAnimationFrame(loop)}
+
+async function tryAudio(src){return new Promise(r=>{const a=new Audio(src);a.oncanplaythrough=()=>r(a);a.onerror=()=>r(null);setTimeout(()=>r(null),1500)})}
+async function start(){
+  $('start').style.display='none';
+  if(!ac){ac=new AudioContext();NB=noiseBuf();master=ac.createGain();master.gain.value=.8;const comp=ac.createDynamicsCompressor();master.connect(comp).connect(ac.destination);
+    [extBgm,extJingle]=await Promise.all([tryAudio('bgm.mp3'),tryAudio('jingle.mp3')]);}
+  await ac.resume();speechSynthesis.cancel();
+  document.querySelectorAll('.callout').forEach(c=>{c.getAnimations().forEach(a=>a.cancel());c.style.opacity=0});
+  t0=ac.currentTime+.05;ci=0;playing=true;
+  if(extBgm){extBgm.currentTime=0;extBgm.volume=.9;extBgm.play();setTimeout(()=>{let v=.9;const f=setInterval(()=>{v-=.05;if(v<=.2){clearInterval(f)}extBgm.volume=Math.max(v,.2)},60)},24500)}
+  else scheduleBeat();
+  if(extBgm&&extJingle)setTimeout(()=>{extJingle.currentTime=0;extJingle.play()},25200);
+  requestAnimationFrame(loop);
+}
+$('start').onclick=start;
+addEventListener('keydown',e=>{if(e.key==='r'||e.key==='R')start()});
+speechSynthesis.getVoices();
+</script>
+</body></html>

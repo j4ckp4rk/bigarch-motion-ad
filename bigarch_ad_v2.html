@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Big Arch Set Spot</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+:root{--red:#DA291C;--gold:#FFC72C;--ink:#0b0b0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'Anton','Black Han Sans',sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;background:var(--ink);overflow:hidden}
+#cam{position:absolute;inset:0}
+.layer{position:absolute;inset:0;opacity:0;overflow:hidden}
+.t{position:absolute;color:#fff;text-transform:uppercase;line-height:.88;white-space:nowrap}
+.kr{font-family:'Black Han Sans',sans-serif}
+.gold{color:var(--gold)}.red{color:var(--red)}.blk{color:#000}
+.out{color:transparent;-webkit-text-stroke:5px var(--gold)}
+.ca{text-shadow:7px 0 rgba(255,0,70,.55),-7px 0 rgba(0,220,255,.45)}
+.c{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+.chip{position:absolute;right:120px;font-family:'Black Han Sans';font-size:58px;color:#000;background:var(--gold);padding:6px 26px;opacity:0;transform-origin:right}
+.marq{position:absolute;left:0;white-space:nowrap;font-size:260px;line-height:1;opacity:.13}
+.marq span{display:inline-block;animation:mq 7s linear infinite}
+.marq.rev span{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
+.prod{position:absolute;filter:drop-shadow(0 40px 50px rgba(0,0,0,.75))}
+.drip{transform-origin:top;animation:drip 2.4s ease-in infinite}
+@keyframes drip{0%{transform:scaleY(.2)}70%{transform:scaleY(1.25)}100%{transform:scaleY(1.25)}}
+.steam{position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.5);filter:blur(22px);animation:st 2.6s ease-out infinite}
+@keyframes st{from{transform:translateY(0) scale(.6);opacity:.0}30%{opacity:.7}to{transform:translateY(-360px) scale(2);opacity:0}}
+.bub{position:absolute;border-radius:50%;border:3px solid rgba(255,255,255,.75);animation:bb linear infinite}
+@keyframes bb{from{transform:translateY(0)}to{transform:translateY(-900px)}}
+.dropl{animation:dl 2.2s ease-in infinite}
+@keyframes dl{0%{transform:translateY(0)}100%{transform:translateY(60px);opacity:0}}
+#grain{position:absolute;inset:-50%;background:repeating-radial-gradient(circle at 30% 40%,rgba(255,255,255,.04) 0 1px,transparent 1px 3px);pointer-events:none;animation:gr .2s steps(2) infinite;z-index:50}
+@keyframes gr{50%{transform:translate(3%,-2%)}}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.75));z-index:49;pointer-events:none}
+#bars:before,#bars:after{content:"";position:absolute;left:0;right:0;height:64px;background:#000;z-index:60}
+#bars:before{top:0}#bars:after{bottom:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:45;pointer-events:none}
+.rays{position:absolute;left:50%;top:50%;width:2600px;height:2600px;margin:-1300px;background:repeating-conic-gradient(rgba(255,199,44,.10) 0 8deg,transparent 8deg 20deg);animation:rot 14s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+#start{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(0,0,0,.85);cursor:pointer;color:var(--gold);font-size:56px;text-align:center}
+#start small{display:block;font-size:22px;color:#aaa;font-family:sans-serif;margin-top:16px}
+#hud{position:fixed;left:12px;bottom:10px;z-index:101;color:#666;font:13px monospace}
+</style></head><body>
+<div id="stage"><div id="cam">
+ <!-- HOOK -->
+ <div class="layer" id="hook"><div class="prod" id="hB" style="left:560px;top:520px;width:800px;opacity:.55"></div><div class="t kr c" id="hookT" style="font-size:230px"></div></div>
+ <!-- V1 BIG ARCH -->
+ <div class="layer" id="v1" style="background:radial-gradient(circle at 35% 55%,#3a1a08,#0b0b0b 60%)">
+  <div class="marq out" style="top:40px"><span>BIG ARCH BIG ARCH BIG ARCH BIG ARCH BIG ARCH BIG ARCH </span></div>
+  <div class="marq out rev" style="top:760px"><span>빅아치 빅아치 빅아치 빅아치 빅아치 빅아치 빅아치 빅아치 빅아치 빅아치 </span></div>
+  <div class="prod" id="b1" style="left:120px;top:250px;width:860px"></div>
+  <div class="t kr gold ca" id="v1T" style="right:120px;top:150px;font-size:170px">빅아치 하나</div>
+  <div class="chip" style="top:380px">쿼터파운드 패티 ×2</div><div class="chip" style="top:480px">화이트 체다 ×3</div>
+  <div class="chip" style="top:580px">크리스피 어니언</div><div class="chip" style="top:680px">빅아치 소스</div><div class="chip" style="top:780px">참깨·양귀비씨 번</div>
+ </div>
+ <!-- V2 McFlurry + Coke -->
+ <div class="layer" id="v2" style="background:radial-gradient(circle at 50% 60%,#2a2a3a,#0b0b0b 65%)">
+  <div class="marq out" id="v2M" style="top:330px"><span>SWEET SWEET SWEET SWEET SWEET SWEET SWEET SWEET </span></div>
+  <div class="prod" id="m1" style="left:760px;top:240px;width:400px"></div>
+  <div class="prod" id="k1" style="left:1350px;top:220px;width:400px;opacity:0"></div>
+  <div class="t kr ca" id="v2T" style="left:120px;top:140px;font-size:150px"></div>
+ </div>
+ <!-- SLOW appetite -->
+ <div class="layer" id="sA" style="background:radial-gradient(circle at 50% 55%,#5a2a08,#120802 70%)">
+  <div class="prod" id="b2" style="left:160px;top:120px;width:1600px"></div>
+  <div class="steam" style="left:700px;top:330px"></div><div class="steam" style="left:960px;top:300px;animation-delay:.9s"></div><div class="steam" style="left:1200px;top:340px;animation-delay:1.6s"></div>
+  <div class="t kr" id="sAT" style="left:120px;top:820px;font-size:90px;letter-spacing:12px"></div>
+ </div>
+ <div class="layer" id="sB" style="background:radial-gradient(circle at 50% 50%,#3a3550,#0a0a12 70%)">
+  <div class="prod" id="m2" style="left:660px;top:40px;width:600px;animation:push 2s linear forwards"></div><style>@keyframes push{from{transform:scale(1)}to{transform:scale(1.15)}}</style>
+  <div class="t kr" id="sBT" style="left:120px;top:820px;font-size:90px;letter-spacing:12px"></div>
+ </div>
+ <div class="layer" id="sC" style="background:radial-gradient(circle at 50% 50%,#6a0a0a,#120202 70%)">
+  <div id="bubs"></div>
+  <div class="prod" id="k2" style="left:560px;top:-160px;width:800px"></div>
+  <div class="t kr" id="sCT" style="left:120px;top:820px;font-size:90px;letter-spacing:12px"></div>
+ </div>
+ <!-- SET -->
+ <div class="layer" id="set" style="background:var(--red)">
+  <div class="rays"></div>
+  <div class="t kr c gold ca" id="setT" style="top:190px;font-size:190px"></div>
+  <div class="prod" id="b3" style="left:120px;top:400px;width:720px"></div>
+  <div class="prod" id="m3" style="left:880px;top:360px;width:330px"></div>
+  <div class="prod" id="k3" style="left:1300px;top:330px;width:340px"></div>
+  <div class="t kr" id="n1" style="left:300px;top:900px;font-size:72px;opacity:0">빅아치</div>
+  <div class="t kr" id="n2" style="left:900px;top:900px;font-size:72px;opacity:0">맥플러리</div>
+  <div class="t kr" id="n3" style="left:1250px;top:900px;font-size:72px;opacity:0">콜라 오리지널</div>
+  <div class="t kr blk" id="stamp" style="left:50%;top:300px;transform:translateX(-50%) rotate(-4deg);font-size:76px;z-index:5;background:var(--gold);padding:6px 34px;opacity:0">주문 한 줄이면 끝.</div>
+ </div>
+ <!-- BREAK -->
+ <div class="layer" id="brk"><div class="t kr c" id="brkT" style="font-size:300px">주문해.</div></div>
+ <!-- END -->
+ <div class="layer" id="end" style="background:var(--red)">
+  <svg id="arch" viewBox="0 0 260 220" style="position:absolute;left:810px;top:110px;width:300px"><path id="archP" d="M10 215 C10 40 45 5 70 5 C100 5 120 60 130 120 C140 60 160 5 190 5 C215 5 250 40 250 215 L212 215 C212 90 200 45 190 45 C175 45 152 120 148 215 L112 215 C108 120 85 45 70 45 C60 45 48 90 48 215 Z" fill="none" stroke="#FFC72C" stroke-width="6"/></svg>
+  <div class="t kr c" style="top:520px;font-size:120px">존박 세트 <span class="gold">지금 주문</span></div>
+  <div class="t c" id="slogan" style="top:640px;font-family:sans-serif;font-weight:800;font-size:66px;text-transform:none;opacity:0">i'm lovin' it</div>
+  <div class="prod" id="b4" style="left:640px;top:720px;width:300px"></div>
+  <div class="prod" id="m4" style="left:960px;top:700px;width:140px"></div>
+  <div class="prod" id="k4" style="left:1120px;top:690px;width:150px"></div>
+  <div class="t" style="right:80px;bottom:76px;font:16px sans-serif;color:#ffd6d0;text-transform:none">Music: "Hard Boiled" Kevin MacLeod (incompetech.com) · CC BY 4.0 · 내부 학습용 시안</div>
+ </div>
+</div>
+<div id="badge" style="position:absolute;left:90px;top:84px;z-index:55;display:flex;gap:10px;font-family:'Black Han Sans';font-size:34px;opacity:0">
+ <span style="background:#DA291C;color:#FFC72C;padding:4px 16px">존박 세트</span><span class="bi" data-i="1">빅아치</span><span class="bi" data-i="2">맥플러리</span><span class="bi" data-i="3">콜라 오리지널</span></div>
+<style>.bi{color:rgba(255,255,255,.45);padding:4px 12px;border:2px solid rgba(255,255,255,.25);transition:all .2s}.layer#set .t.kr[id^=n]{background:#000;color:#FFC72C;padding:6px 22px;z-index:4}.bi.on{color:#000;background:#FFC72C;border-color:#FFC72C}
+.bitten svg{-webkit-mask-image:radial-gradient(circle 120px at 86% 14%,transparent 98%,#000 100%),radial-gradient(circle 100px at 95% 30%,transparent 98%,#000 100%),radial-gradient(circle 95px at 77% 6%,transparent 98%,#000 100%);-webkit-mask-composite:source-in;mask-composite:intersect}</style>
+<div id="vig"></div><div id="grain"></div><div id="flash"></div><div id="bars"></div>
+</div>
+<div id="start">▶ CLICK TO PLAY (30s, 사운드 ON)<small>R = 다시재생</small></div>
+<div id="hud"></div>
+<script>
+const $=id=>document.getElementById(id),stage=$('stage'),cam=$('cam');
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}addEventListener('resize',fit);fit();
+document.head.insertAdjacentHTML('beforeend','<style>@keyframes sw{to{transform:rotate(360deg)}}</style>');
+
+/* ---------- PRODUCT ILLUSTRATIONS ---------- */
+const seeds=Array.from({length:34},(_,i)=>{const a=Math.random()*Math.PI,r=60+Math.random()*190;return `<ellipse cx="${300+Math.cos(a)*r*1.05}" cy="${150-Math.sin(a)*r*.48}" rx="${i%3?6:4}" ry="3" fill="${i%3?'#fff3d6':'#2a2420'}" transform="rotate(${Math.random()*80-40} ${300+Math.cos(a)*r} ${150-Math.sin(a)*r*.48})"/>`}).join('');
+const drips=(y)=>[140,210,300,390,460].map((x,i)=>`<path class="drip" style="animation-delay:${i*.35}s" d="M${x} ${y} q8 ${30+i*6} 0 ${44+i*8} q-8 -${14+i*4} -10 -${44+i*8}z" fill="#fff0c0"/>`).join('');
+const BURGER=`<svg viewBox="0 0 600 560"><defs>
+<linearGradient id="bun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6bd66"/><stop offset=".6" stop-color="#d48a35"/><stop offset="1" stop-color="#a8611f"/></linearGradient>
+<linearGradient id="pat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b3818"/><stop offset=".5" stop-color="#3a1c0b"/><stop offset="1" stop-color="#241006"/></linearGradient>
+<radialGradient id="hl" cx=".35" cy=".3" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="300" cy="540" rx="270" ry="18" fill="#000" opacity=".5"/>
+<path d="M50 450 Q50 525 120 530 L480 530 Q550 525 550 450 Z" fill="url(#bun)"/>
+<rect x="40" y="380" width="520" height="80" rx="34" fill="url(#pat)"/>
+${drips(395)}<path d="M45 385 L555 385 L540 405 L60 405Z" fill="#fff4cc"/>
+<rect x="40" y="290" width="520" height="85" rx="34" fill="url(#pat)"/>
+${Array.from({length:40},()=>`<circle cx="${70+Math.random()*460}" cy="${300+Math.random()*65}" r="${2+Math.random()*3}" fill="#1a0a03" opacity=".6"/>`).join('')}
+${drips(298)}<path d="M38 292 L562 292 L545 314 L55 314Z" fill="#fff4cc"/><path d="M45 272 L555 272 L540 294 L60 294Z" fill="#fde7a8"/>
+${Array.from({length:22},(_,i)=>`<path d="M${60+i*22} 268 q10 -14 20 0" stroke="#c46e1c" stroke-width="7" fill="none" stroke-linecap="round"/>`).join('')}
+<path d="M30 262 q30 -22 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 L570 250 L30 250Z" fill="#7ccf3e"/>
+<path d="M44 244 Q300 266 556 244 L556 236 L44 236Z" fill="#f08a4b"/>
+<path d="M40 240 Q40 30 300 22 Q560 30 560 240 Z" fill="url(#bun)"/><path d="M40 240 Q40 30 300 22 Q560 30 560 240 Z" fill="url(#hl)"/>
+${seeds}</svg>`;
+const MCF=`<svg viewBox="0 0 360 560"><defs><linearGradient id="cup" x1="0" x2="1"><stop offset="0" stop-color="#dcdcdc"/><stop offset=".4" stop-color="#fff"/><stop offset="1" stop-color="#cfcfcf"/></linearGradient></defs>
+<ellipse cx="180" cy="545" rx="120" ry="12" fill="#000" opacity=".5"/>
+<rect x="250" y="20" width="18" height="240" rx="9" fill="#e8e8e8" transform="rotate(14 259 140)"/>
+<path d="M50 230 Q40 170 110 160 Q100 110 160 100 Q170 60 215 80 Q270 95 250 150 Q320 160 310 230Z" fill="#fff8ec"/>
+${Array.from({length:28},()=>`<rect x="${70+Math.random()*220}" y="${110+Math.random()*110}" width="${6+Math.random()*9}" height="${5+Math.random()*7}" rx="2" fill="#2b1b12" transform="rotate(${Math.random()*90})" transform-origin="center"/>`).join('')}
+<path d="M40 225 L320 225 L290 535 L70 535Z" fill="url(#cup)"/>
+<path d="M48 300 Q180 250 312 300 L306 350 Q180 300 54 350Z" fill="#DA291C"/><path d="M54 350 Q180 300 306 350 L302 380 Q180 335 57 380Z" fill="#FFC72C"/>
+<text x="180" y="455" text-anchor="middle" font-family="Anton" font-size="52" fill="#DA291C">McFlurry</text></svg>`;
+const COKE=`<svg viewBox="0 0 360 600"><defs><linearGradient id="cc" x1="0" x2="1"><stop offset="0" stop-color="#9c0f0f"/><stop offset=".45" stop-color="#e3221a"/><stop offset="1" stop-color="#8a0c0c"/></linearGradient></defs>
+<ellipse cx="180" cy="585" rx="120" ry="12" fill="#000" opacity=".5"/>
+<rect x="196" y="0" width="22" height="160" rx="6" fill="#fff"/><rect x="196" y="20" width="22" height="16" fill="#DA291C"/><rect x="196" y="70" width="22" height="16" fill="#DA291C"/>
+<path d="M40 150 Q180 110 320 150 L320 175 L40 175Z" fill="#f3f3f3"/>
+<path d="M45 175 L315 175 L285 575 L75 575Z" fill="url(#cc)"/>
+<path d="M55 330 Q140 260 200 340 T312 330 L308 380 Q240 320 190 390 T60 380Z" fill="#fff"/>
+<text x="180" y="270" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="52" fill="#fff">Coca-Cola</text>
+<text x="180" y="470" text-anchor="middle" font-family="Anton" font-size="34" letter-spacing="4" fill="#fff">ORIGINAL</text>
+${Array.from({length:30},(_,i)=>`<ellipse class="dropl" style="animation-delay:${Math.random()*2}s" cx="${80+Math.random()*200}" cy="${190+Math.random()*360}" rx="${3+Math.random()*4}" ry="${5+Math.random()*6}" fill="#fff" opacity=".55"/>`).join('')}</svg>`;
+['hB','b1','b2','b3','b4'].forEach(i=>$(i).innerHTML=BURGER);['m1','m2','m3','m4'].forEach(i=>$(i).innerHTML=MCF);['k1','k2','k3','k4'].forEach(i=>$(i).innerHTML=COKE);
+$('bubs').innerHTML=Array.from({length:40},()=>{const s=8+Math.random()*30;return `<div class="bub" style="left:${Math.random()*1920}px;top:${1100+Math.random()*300}px;width:${s}px;height:${s}px;animation-duration:${2+Math.random()*3}s;animation-delay:${-Math.random()*3}s"></div>`}).join('');
+
+/* ---------- AUDIO ---------- */
+const BPM=93.54,B=60/BPM,DROP=3.0,TRACK_OFF=137.02,beat=k=>DROP+k*B;
+let ac,master,NB,bgmBuf=null,t0=0,playing=false,lp;
+function noiseBuf(){const b=ac.createBuffer(1,ac.sampleRate*.6,ac.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b}
+const N=(t,dur,type,f,v,q=1,rate=1)=>{const s=ac.createBufferSource();s.buffer=NB;s.loop=true;s.playbackRate.value=rate;const fl=ac.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;const g=ac.createGain();g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);s.connect(fl).connect(g).connect(master);s.start(t);s.stop(t+dur+.02);return{fl,g}};
+function kick(t,v=.9){const o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(42,t+.12);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.45);o.connect(g).connect(master);o.start(t);o.stop(t+.5)}
+const clap=t=>{for(let i=0;i<3;i++)N(t+i*.011,.12,'bandpass',1300,.35,1.2)};
+const hat=(t,v=.08)=>N(t,.035,'highpass',8500,v);
+function impact(t){kick(t,1.2);N(t,.9,'lowpass',400,.6);N(t,.5,'bandpass',2500,.25)}
+function whoosh(t,d=.5){const n=N(t,d,'bandpass',300,.001,3);n.g.gain.cancelScheduledValues(t);n.g.gain.setValueAtTime(.001,t);n.g.gain.exponentialRampToValueAtTime(.35,t+d*.7);n.g.gain.exponentialRampToValueAtTime(.001,t+d);n.fl.frequency.exponentialRampToValueAtTime(6000,t+d)}
+function riser(t,d){const n=N(t,d,'bandpass',300,.001,5);n.g.gain.cancelScheduledValues(t);n.g.gain.setValueAtTime(.01,t);n.g.gain.linearRampToValueAtTime(.35,t+d);n.fl.frequency.exponentialRampToValueAtTime(9000,t+d)}
+function scratch(t){const s=ac.createBufferSource();s.buffer=NB;s.playbackRate.setValueAtTime(.3,t);s.playbackRate.linearRampToValueAtTime(2,t+.08);s.playbackRate.linearRampToValueAtTime(.4,t+.18);const f=ac.createBiquadFilter();f.type='bandpass';f.frequency.value=900;f.Q.value=3;const g=ac.createGain();g.gain.value=.5;s.connect(f).connect(g).connect(master);s.start(t);s.stop(t+.2)}
+function sizzle(t,d){for(let x=0;x<d*40;x++)N(t+Math.random()*d,.03+Math.random()*.05,'highpass',4000+Math.random()*4000,.04+Math.random()*.1)}
+function fizz(t,d){for(let x=0;x<d*90;x++)N(t+Math.random()*d,.012,'bandpass',5000+Math.random()*6000,.03+Math.random()*.08,4)}
+function crunch(t){for(let i=0;i<7;i++)N(t+i*.025+Math.random()*.01,.05,'bandpass',1800+Math.random()*1500,.4,1.5)}
+function bell(t,f,v=.2){const o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.7);o.connect(g).connect(master);o.start(t);o.stop(t+.8)}
+
+function scheduleAudio(){
+  const T=t0;
+  // HOOK: sizzle cold open + scratches + riser
+  sizzle(T,2.2);scratch(T+.85);scratch(T+1.55);riser(T+1.7,1.3);kick(T+.1,.6);
+  // BGM bed
+  if(bgmBuf){const s=ac.createBufferSource();s.buffer=bgmBuf;const g=ac.createGain();lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=20000;
+    s.connect(lp).connect(g).connect(master);g.gain.setValueAtTime(.95,T+DROP);g.gain.setValueAtTime(.95,T+beat(32)-.03);g.gain.linearRampToValueAtTime(0,T+beat(32));
+    s.start(T+DROP,TRACK_OFF,beat(32)-DROP+.1);
+    // slow-mo muffle
+    lp.frequency.setValueAtTime(20000,T+beat(16)-.01);lp.frequency.exponentialRampToValueAtTime(500,T+beat(16)+.4);lp.frequency.setValueAtTime(500,T+beat(24)-.4);lp.frequency.exponentialRampToValueAtTime(20000,T+beat(24));
+    g.gain.setValueAtTime(.95,T+beat(16));g.gain.linearRampToValueAtTime(.55,T+beat(16)+.4);g.gain.setValueAtTime(.55,T+beat(24)-.3);g.gain.linearRampToValueAtTime(.95,T+beat(24));}
+  // trap layer on top (V1, V2, SET)
+  for(let k=0;k<32;k++){if(k>=16&&k<24)continue;const t=T+beat(k);
+    if(k%2===0)kick(t,.55);if(k%2===1)clap(t);
+    for(let s=0;s<2;s++)hat(t+s*B/2);if(k%8===7)for(let r=0;r<6;r++)hat(t+B/2+r*B/12,.06)}
+  [0,8,24].forEach(k=>impact(T+beat(k)));whoosh(T+beat(8)-.5);whoosh(T+beat(12)-.4,.4);
+  // slow-mo SFX
+  sizzle(T+beat(16),beat(19)-beat(16));crunch(T+beat(18));crunch(T+beat(18)+.18);
+  whoosh(T+beat(19)-.3,.4);fizz(T+beat(22),beat(24)-beat(22));whoosh(T+beat(24)-.4,.4);
+  // break + jingle sting (original motif)
+  riser(T+beat(32)+.2,25-beat(32)-.2);
+  const J=T+25.05;impact(J);[523.3,587.3,659.3,0,784,880].forEach((f,i)=>{if(f){bell(J+.15+i*.16,f,.22);bell(J+.15+i*.16,f/2,.08)}});
+}
+function say(text,lang='ko-KR',rate=1.25,pitch=.6){try{const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate;u.pitch=pitch;const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith(lang.slice(0,2)));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+
+/* ---------- VISUAL HELPERS ---------- */
+const cues=[],at=(t,fn)=>cues.push([t,fn]);
+const show=id=>document.querySelectorAll('.layer').forEach(l=>l.style.opacity=l.id===id?1:0);
+const A=(el,k,o)=>el.animate(k,Object.assign({fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'},o));
+function slam(el,html,s=2.4){if(html!=null)el.innerHTML=html;const base=getComputedStyle(el).transform;el.animate([{scale:s,opacity:0,filter:'blur(14px)'},{scale:.95,opacity:1,filter:'blur(0)',offset:.6},{scale:1,opacity:1}],{duration:280,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'})}
+function split(el,text,cls=''){el.innerHTML=[...text].map((c,i)=>`<span class="${cls}" style="display:inline-block;opacity:0">${c===' '?'&nbsp;':c}</span>`).join('');[...el.children].forEach((s,i)=>s.animate([{transform:'translateY(110%) rotate(12deg)',opacity:0},{transform:'none',opacity:1}],{duration:320,delay:i*45,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'}))}
+function punch(n=1.06){cam.animate([{scale:n},{scale:1}],{duration:260,easing:'ease-out'})}
+function shake(n=18){cam.animate([{translate:'0 0'},{translate:`${n}px ${-n}px`},{translate:`${-n}px ${n/2}px`},{translate:'0 0'}],{duration:180})}
+const flash=(o=.8)=>$('flash').animate([{opacity:o},{opacity:0}],{duration:240});
+const badge=i=>{$('badge').style.opacity=i<0?0:1;document.querySelectorAll('.bi').forEach(b=>b.classList.toggle('on',i===4||+b.dataset.i===i))};
+const glow=id=>$(id).animate([{filter:'drop-shadow(0 40px 50px rgba(0,0,0,.75)) brightness(1.4) saturate(1.3)'},{filter:'drop-shadow(0 40px 50px rgba(0,0,0,.75)) brightness(1) saturate(1)'}],{duration:300});
+// rhythmic VO: one chunk per beat so the voice rides the grid
+const rap=(k,parts)=>parts.forEach((p,i)=>at(beat(k)+i*B-.08,()=>say(p,'ko-KR',1.35,.55)));
+// pulse visible products on every beat
+for(let k=0;k<32;k++){if(k>=16&&k<24)continue;at(beat(k),()=>['b1','m1','k1','b3','m3','k3'].forEach(id=>{if($(id).closest('.layer').style.opacity==='1')glow(id)}))}
+
+/* ---------- TIMELINE ---------- */
+// HOOK 0–3s : the concept line
+at(0,()=>{show('hook');A($('hB'),[{scale:1.6,opacity:.2},{scale:1.9,opacity:.6}],{duration:3000,easing:'linear'});split($('hookT'),'주문은')});
+at(.85,()=>{slam($('hookT'),'<span class="gold ca">랩으로</span>');shake(14)});
+at(1.55,()=>{slam($('hookT'),'<span class="red ca">받는다.</span>',3);shake(24);flash(.5)});
+at(2.3,()=>{$('hookT').innerHTML='<span style="font-size:110px;letter-spacing:20px">MIC CHECK</span>';A($('hookT'),[{opacity:1},{opacity:.2}],{duration:600})});
+at(.1,()=>say('주문은, 랩으로 받는다.','ko-KR',1.15,.55));
+// V1 Big Arch
+at(beat(0),()=>{show('v1');flash(1);shake(30);punch(1.12);A($('b1'),[{transform:'translateY(-900px) rotate(-12deg)'},{transform:'translateY(30px) rotate(2deg)',offset:.7},{transform:'none'}],{duration:520});slam($('v1T'),null,2);badge(1)});rap(0,['빅아치','하나']);
+[...document.querySelectorAll('#v1 .chip')].forEach((c,i)=>at(beat(2+i),()=>{A(c,[{opacity:0,transform:'scaleX(0)'},{opacity:1,transform:'scaleX(1.06)',offset:.7},{opacity:1,transform:'scaleX(1)'}],{duration:260});punch(1.03)}));
+at(beat(4),()=>{A($('b1'),[{scale:1},{scale:1.07}],{duration:B*4000,easing:'linear'})});
+// V2 McFlurry + Coke
+at(beat(8),()=>{show('v2');flash(.9);punch(1.1);A($('m1'),[{transform:'translateY(700px) rotate(20deg)'},{transform:'translateY(-20px) rotate(-3deg)',offset:.7},{transform:'none'}],{duration:520});split($('v2T'),'맥플러리 하나','gold');badge(2)});rap(8,['맥플러리','하나']);
+at(beat(10),()=>{$('m1').animate([{rotate:'0deg'},{rotate:'-6deg'},{rotate:'6deg'},{rotate:'0deg'}],{duration:500});punch()});
+at(beat(12),()=>{A($('m1'),[{transform:'none'},{transform:'translateX(-420px)'}],{duration:350});$('k1').style.opacity=1;A($('k1'),[{transform:'translateX(700px) rotate(25deg)'},{transform:'translateX(-30px) rotate(-3deg)',offset:.7},{transform:'none'}],{duration:480});
+  $('v2M').querySelector('span').textContent='FIZZ FIZZ FIZZ FIZZ FIZZ FIZZ FIZZ FIZZ FIZZ FIZZ ';split($('v2T'),'콜라는 오리지널','red');shake(20);badge(3)});rap(12,['콜라는','오리지널']);
+at(beat(14),()=>punch(1.08));
+// SLOW appetite (8 beats)
+at(beat(18),()=>{$('b2').classList.add('bitten');slam($('sAT'),'<span class="gold">한 입.</span>',1.6);shake(16);flash(.35)});
+at(beat(16),()=>{show('sA');badge(-1);A($('b2'),[{transform:'translateY(60px) scale(1)'},{transform:'translateY(-80px) scale(1.18)'}],{duration:(beat(19)-beat(16))*1000,easing:'linear'});split($('sAT'),'치즈가 흘러내린다')});
+at(beat(19),()=>{show('sB');split($('sBT'),'부드럽게 섞인다')});
+at(beat(22),()=>{show('sC');A($('k2'),[{scale:1},{scale:1.12}],{duration:2000,easing:'linear'});split($('sCT'),'톡, 쏜다')});
+// SET lockup
+at(beat(24),()=>{show('set');badge(-1);flash(1);shake(30);punch(1.12);[['b3',-700],['m3',900],['k3',900]].forEach(([id,y],i)=>A($(id),[{transform:`translateY(${y}px)`},{transform:'translateY(-20px)',offset:.7},{transform:'none'}],{duration:450,delay:i*90}));A($('n1'),[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:250})});
+at(beat(25),()=>{A($('n2'),[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:250});punch(1.04)});
+at(beat(26),()=>{A($('n3'),[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:250});punch(1.04)});
+at(beat(27),()=>{slam($('setT'),'이게 바로 <span style="color:#fff">존박 세트</span>',2.6);shake(26);flash(.6)});rap(27,['이게 바로','존박','세트']);rap(30,['주문','한 줄이면','끝']);
+at(beat(30),()=>{$('stamp').style.opacity=1;slam($('stamp'),null,3);shake(20)});
+// BREAK
+at(beat(32),()=>{show('brk');badge(-1);slam($('brkT'),null,1.6);say('주문해.','ko-KR',1,.5)});
+// END
+at(25,()=>{show('end');flash(1);const p=$('archP');p.style.strokeDasharray=1400;p.animate([{strokeDashoffset:1400,fill:'rgba(255,199,44,0)'},{strokeDashoffset:0,fill:'rgba(255,199,44,0)',offset:.6},{strokeDashoffset:0,fill:'rgba(255,199,44,1)'}],{duration:1100,fill:'forwards'});
+  ['b4','m4','k4'].forEach((id,i)=>A($(id),[{transform:'translateY(300px)',opacity:0},{transform:'none',opacity:1}],{duration:500,delay:300+i*100}))});
+at(26.5,()=>{A($('slogan'),[{opacity:0,letterSpacing:'30px'},{opacity:1,letterSpacing:'0px'}],{duration:600});say("I'm lovin' it.",'en-US',.85,.8)});
+at(29.4,()=>{show('hook');$('hB').style.opacity=.2;$('hookT').innerHTML='<span style="font-size:120px;opacity:.5">주문은...</span>'});
+at(30,()=>{playing=false;$('start').style.display='grid'});
+cues.sort((a,b)=>a[0]-b[0]);
+
+let ci=0;function loop(){if(!playing)return;const t=ac.currentTime-t0;$('hud').textContent=t.toFixed(2)+'s / 30.00s';while(ci<cues.length&&cues[ci][0]<=t){cues[ci][1]();ci++}requestAnimationFrame(loop)}
+async function start(){
+  $('start').style.display='none';
+  if(!ac){ac=new AudioContext();NB=noiseBuf();master=ac.createGain();master.gain.value=.8;master.connect(ac.createDynamicsCompressor()).connect(ac.destination);
+    try{bgmBuf=await ac.decodeAudioData(await (await fetch('dl/Hard_Boiled.mp3')).arrayBuffer())}catch(e){console.warn('BGM load failed (open via local server)',e)}}
+  await ac.resume();speechSynthesis.cancel();document.getAnimations().forEach(a=>{if(a.effect&&a.effect.getTiming().iterations!==Infinity)a.cancel()});
+  ['k1','n1','n2','n3','stamp','slogan'].forEach(i=>$(i).style.opacity=0);$('b2').classList.remove('bitten');$('hB').style.opacity=.55;badge(-1);
+  t0=ac.currentTime+.1;ci=0;playing=true;scheduleAudio();requestAnimationFrame(loop)}
+$('start').onclick=start;addEventListener('keydown',e=>{if(e.key==='r'||e.key==='R')start()});speechSynthesis.getVoices();
+</script></body></html>

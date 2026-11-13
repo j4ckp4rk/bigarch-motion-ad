@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><body><pre id=o>running</pre><script>
+const files=["Bass_Walker","Cool_Vibes","Crypto","Darkest_Child","Funk_Game_Loop","Hard_Boiled","Rollin_at_5"];
+(async()=>{const ac=new OfflineAudioContext(1,44100,44100);const out=[];
+for(const f of files){const buf=await ac.decodeAudioData(await (await fetch('dl/'+f+'.mp3')).arrayBuffer());
+const sr=buf.sampleRate,d=buf.getChannelData(0),hop=512,n=Math.floor(d.length/hop);const env=new Float32Array(n),low=new Float32Array(n);let lp=0;
+for(let i=0;i<n;i++){let s=0,l=0;for(let j=0;j<hop;j++){const x=d[i*hop+j];s+=x*x;lp+=.02*(x-lp);l+=lp*lp}env[i]=Math.sqrt(s/hop);low[i]=Math.sqrt(l/hop)}
+const on=new Float32Array(n);for(let i=1;i<n;i++)on[i]=Math.max(0,env[i]-env[i-1]);
+const fps=sr/hop;let best=0,bb=0;for(let bpm=70;bpm<=140;bpm+=.5){const lag=fps*60/bpm;let c=0;for(let i=0;i+lag*2<n;i++)c+=on[i]*on[Math.round(i+lag)];if(c>best){best=c;bb=bpm}}
+const w=Math.round(30*fps);let bs=0,bi=0,cur=0;for(let i=0;i<n;i++){cur+=env[i];if(i>=w)cur-=env[i-w];if(i>=w&&cur>bs){bs=cur;bi=i-w}}
+const mean=a=>a.reduce((p,c)=>p+c,0)/a.length;const pk=on.reduce((p,c)=>p+(c>0.05?1:0),0)/buf.duration;
+out.push(`${f.padEnd(15)} dur ${buf.duration.toFixed(0)}s bpm ${bb} (x2 ${bb*2}) bassRatio ${(mean(low)/mean(env)).toFixed(2)} punch/s ${pk.toFixed(2)} loudest30s@ ${(bi/fps).toFixed(1)}s`);
+document.getElementById('o').textContent=out.join('\n')}
+document.getElementById('o').textContent+= '\nDONE'})().catch(e=>o.textContent='ERR '+e);
+</script>
